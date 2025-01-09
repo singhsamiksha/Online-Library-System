@@ -34,6 +34,17 @@ li{
   list-style-type: none;
   font-size: 18px;
 }
+
+li:active{
+  text-decoration: underline;
+  color: white;
+}
+
+li:hover{
+  text-decoration: underline;
+  color: rgb(154, 226, 255);
+}
+
 .Category_box{
   padding: 30px;
 }
@@ -56,4 +67,9 @@ li{
 
 .popular_box{
   padding: 20px;
+}
+
+
+.middle{
+  
 }

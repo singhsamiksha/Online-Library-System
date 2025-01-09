@@ -5,7 +5,7 @@ function Popular({ data }) {
 
   useEffect(() => {
       setPopular(data.slice(0, 8));
-  }, []);
+  }, [data]);
 
   return (
     <div className="popular_box">
