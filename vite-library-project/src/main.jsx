@@ -2,10 +2,11 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.jsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Error from './Components/Error.jsx'
-import BrowserPage from './Components/BrowserPage.jsx'; // Add the import for BrowserPage component
-import BookDetail from './Components/BookDetail.jsx'; // Add the import for BookDetail component
-import AddBook from './Components/AddBook.jsx'; // Add the import for AddBook component
+import Error from './Components/Error.jsx';
+import BrowserPage from './Components/BrowserPage.jsx';
+import BookDetail from './Components/BookDetail.jsx';
+import AddBook from './Components/AddBook.jsx';
+import BooksByCategory from './Components/BooksByCategory.jsx'; 
 
 const appRouter = createBrowserRouter([
   {
@@ -19,14 +20,19 @@ const appRouter = createBrowserRouter([
     errorElement: <Error />,
   },
   {
-    path: "/bookdetail",
+    path: "/browserpage/:id",
     element: <BookDetail />,
-    errorElement: <Error />,
+    errorElement: <Error />
   },
   {
     path: "/addbook",
     element: <AddBook />,
     errorElement: <Error />,
+  },
+  {
+    path: "/books/:category", 
+    element: <BooksByCategory />,
+    errorElement: <Error />
   }
 ]);
 

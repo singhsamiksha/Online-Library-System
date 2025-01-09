@@ -13,7 +13,7 @@ function App() {
 
     async function fetchData() {
         try {
-            const response = await fetch('https://www.freetestapi.com/api/v1/books');
+            const response = await fetch('https://677f87360476123f76a6df69.mockapi.io/bookhubapi/bookdata');
             const data = await response.json();
             setBooks(data); // Store the fetched data in state
         } catch (error) {

@@ -70,6 +70,18 @@ li:hover{
 }
 
 
-.middle{
-  
+.category_flex{
+  display: flex;
+  padding: 50px 100px ;
+  justify-content: space-between;
+}
+
+.search, .select{
+  display: flex;
+  gap:10px;
+}
+
+input, select{
+  width: 300px;
+  padding: 0px 5px ;
 }

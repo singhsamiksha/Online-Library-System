@@ -15,8 +15,8 @@ function Popular({ data }) {
                 popular.map((element, index) => (
                 <div key={index}>
                     <img src={element.cover_image} alt={element.title} width="120px" height="180px"/>
-                    <div class="middle">
-                        <div class="text">View More</div>
+                    <div className="middle">
+                        <div className="text">View More</div>
                     </div>
                     <p>{element.title}</p>
                 </div>

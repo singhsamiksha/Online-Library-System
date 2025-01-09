@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+
 function Categories({ data }) {
     const [genres, setGenres] = useState(new Set()); // State to store unique genres
 
