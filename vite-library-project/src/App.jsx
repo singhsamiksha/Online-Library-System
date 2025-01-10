@@ -24,6 +24,9 @@ function App() {
     return (
         <>
             <Navbar />
+            <div className="Image">
+                <img src=".\src\assets\banner3.jpg" width="100%"/>
+            </div>
             <Categories data={books} /> 
             <Popular data={books}></Popular>
         </>

@@ -19,7 +19,7 @@ function Categories({ data }) {
             <h2>Categories</h2>
             <ul className='book_category'>
                 {[...genres].map((genre, index) => (
-                    <li key={index}><button>{genre}</button></li>
+                    <li key={index}><button className='genre_button'>{genre}</button></li>
                 ))}
             </ul>
         </div>
