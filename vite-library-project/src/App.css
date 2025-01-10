@@ -58,11 +58,15 @@ li:hover{
   padding: 20px;
 }
 
-.popular_book{
+.popular_book, .book-list{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 50px; 
   justify-content: center;  
+}
+
+.book-list{
+  margin: 60px;
 }
 
 
@@ -87,7 +91,7 @@ input, select{
   margin: 20px;
 }
 
-.Category_box h2, .popular_box h2{
+.Category_box h2, .popular_box h2, .list-box h2{
   text-align: center;
   font-size: 30px;
   margin-bottom: 30px;
