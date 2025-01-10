@@ -70,7 +70,7 @@ function BrowserPage() {
                     </div>
                 </div>
                 <div className="list-box">
-                    <h2>{selectedGenre}</h2>
+                    <h2>{selectedGenre + " " + "Books"}</h2>
                     <div className="book-list">
                     {filteredBooks.map((book) => (
                         <div key={book.id} className="book">
