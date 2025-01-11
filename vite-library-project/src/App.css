@@ -4,7 +4,7 @@
     padding: 0;
 }
 
-.navbar{
+.navbar, .detailBookHeader{
   display: flex;
   justify-content: space-between;
   background-color: rgb(32, 101, 206);
@@ -160,3 +160,45 @@ select{
      background-color: rgb(115, 173, 22);
      border-color: rgb(115, 173, 22);
 }
+
+h3{
+  text-align: center;
+}
+
+.book_author{
+  margin: 10px 2px;
+  color: #ce4320;
+  font-size: 100px;
+}
+
+.detailBookHeader button{
+     width: 100px;
+     background-color: white;
+     border: none;
+     box-shadow: #7bb9ff;
+     color: #7bb9ff;
+     padding: 5px;
+     font-size: 20px;
+}
+
+.detail_box{
+  display: flex;
+  gap: 50px;
+  justify-content: space-evenly;
+  margin: 30px 200px;
+  padding: 50px 30px;
+  box-shadow: 2px 2px 2px 2px rgba(126, 126, 126, 0.342);
+  border-radius: 20px;
+}
+
+.book_text h2{
+   font-size: 38px;
+}
+ hr{
+  margin-bottom: 20px;
+ }
+
+.book_text p{
+  margin: 5px 0px;
+}
+

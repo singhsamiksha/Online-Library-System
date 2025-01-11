@@ -20,7 +20,7 @@ const appRouter = createBrowserRouter([
     errorElement: <Error />,
   },
   {
-    path: "/browserpage/:id",
+    path: "/book/:id",
     element: <BookDetail />,
     errorElement: <Error />
   },

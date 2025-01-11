@@ -1,25 +1,35 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Categories({ data }) {
-    const [genres, setGenres] = useState(new Set()); // State to store unique genres
+    const [genres, setGenres] = useState(new Set());
+    const navigate = useNavigate();
 
     useEffect(() => {
         const genresSet = new Set();
         data.forEach((book) => {
-            book.genre.forEach((g) => {
-                genresSet.add(g); // Collect all unique genres
-            });
+            book.genre.forEach((g) => genresSet.add(g));
         });
-        setGenres(genresSet); // Update state with the unique genres
+        setGenres(genresSet);
     }, [data]);
 
+    function handleClick(genre) {
+        navigate(`/browserpage?genre=${genre}`); // Navigate with query params
+    }
+
     return (
-        <div className='Category_box'>
+        <div className="Category_box">
             <h2>Categories</h2>
-            <ul className='book_category'>
+            <ul className="book_category">
                 {[...genres].map((genre, index) => (
-                    <li key={index}><button className='genre_button'>{genre}</button></li>
+                    <li key={index}>
+                        <button
+                            className="genre_button"
+                            onClick={() => handleClick(genre)}
+                        >
+                            {genre}
+                        </button>
+                    </li>
                 ))}
             </ul>
         </div>
