@@ -20,6 +20,9 @@ function BrowserPage() {
         const genresSet = new Set();
         books.forEach((book) => {
             if (Array.isArray(book.genre)) {
+                book.genre.forEach((g) => genresSet.add(g));
+            }
+            if (Array.isArray(book.genre)) {
                book.genre.forEach((g) => genresSet.add(g));
             }
         });
