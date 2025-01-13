@@ -19,7 +19,9 @@ function BrowserPage() {
     useEffect(() => {
         const genresSet = new Set();
         books.forEach((book) => {
-            book.genre.forEach((g) => genresSet.add(g));
+            if (Array.isArray(book.genre)) {
+               book.genre.forEach((g) => genresSet.add(g));
+            }
         });
         setGenres(genresSet);
     }, [books]);

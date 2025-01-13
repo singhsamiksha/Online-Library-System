@@ -8,7 +8,9 @@ function Categories({ data }) {
     useEffect(() => {
         const genresSet = new Set();
         data.forEach((book) => {
-            book.genre.forEach((g) => genresSet.add(g));
+            if (Array.isArray(book.genre)) {
+               book.genre.forEach((g) => genresSet.add(g));
+            }
         });
         setGenres(genresSet);
     }, [data]);
