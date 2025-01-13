@@ -57,9 +57,7 @@ function AddBook() {
       <div className="addBookForm">
         <h2>Add a New Book</h2>
         <form onSubmit={handleSubmit}>
-          <label>
-            Title:
-            <input
+          <label> Title: <input
               type="text"
               name="title"
               value={book.title}
@@ -68,8 +66,7 @@ function AddBook() {
             />
           </label>
           <br />
-          <label>
-            Author:
+          <label> Author:
             <input
               type="text"
               name="author"
@@ -79,8 +76,7 @@ function AddBook() {
             />
           </label>
           <br />
-          <label>
-            Publication Year:
+          <label> Publication Year:
             <input
               type="number"
               name="publication_year"
@@ -90,8 +86,7 @@ function AddBook() {
             />
           </label>
           <br />
-          <label>
-            Genre:
+          <label> Genre:
             <input
               type="text"
               name="genre"
@@ -101,8 +96,7 @@ function AddBook() {
             />
           </label>
           <br />
-          <label>
-            Description:
+          <label> Description:
             <input
               type="text"
               name="description"
@@ -112,8 +106,7 @@ function AddBook() {
             />
           </label>
           <br />
-          <label>
-            Cover Image URL:
+          <label> Cover Image URL:
             <input
               type="text"
               name="cover_image"
@@ -123,8 +116,7 @@ function AddBook() {
             />
           </label>
           <br />
-          <label>
-            Rating:
+          <label> Rating:
             <input
               type="number"
               step="0.1"

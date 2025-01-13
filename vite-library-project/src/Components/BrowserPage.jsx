@@ -9,6 +9,7 @@ function BrowserPage() {
     const [selectedGenre, setSelectedGenre] = useState("");
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
+ 
 
     useEffect(() => {
         const genreFromParams = searchParams.get("genre") || "";

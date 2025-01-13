@@ -21,7 +21,15 @@ function BookDetail() {
         fetchBook();
     }, [id]);
 
-    if (!book) return <p>Loading...</p>;
+    if (!book) {
+        return (
+            <div className="loading_class">
+                <div className="loading"></div>
+                <p>Loading...</p>
+            </div>
+        
+    );
+    }
 
     return (
         <>

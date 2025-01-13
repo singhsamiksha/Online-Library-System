@@ -206,3 +206,91 @@ h3{
   display: flex;
   flex-direction: column;
 }
+
+.errorBox{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 100px;
+
+}
+
+.errorBox h1{
+  font-size:  60px;
+  margin: 20px;
+  color: #ce4320;
+}
+
+.errorBox p{
+  color: rgb(32, 101, 206);
+}
+
+.addBookForm {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 2px 2px 2px 2px rgba(202, 202, 202, 0.342);
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 50px;
+}
+
+.addBookForm h2 {
+  text-align: center;
+  color: rgb(32, 101, 206);
+}
+
+.addBookForm label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #333;
+}
+
+.addBookForm input {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #333;
+}
+
+.addBookForm button {
+  display: flex;
+  justify-content: center;
+  width: 95%;
+  padding: 12px;
+  background-color: #7bb9ff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+}
+
+.addBookForm button:hover {
+  background-color: rgb(32, 101, 206);
+}
+
+.loading_class{
+  margin: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.loading{
+  width: 50px;
+  height: 50px;
+  border-radius: 20%;
+  background-color: #2065ce;
+  margin: 50px;
+}
+.loading_class p{
+  font-size: 40px;
+}
+
+

@@ -9,11 +9,7 @@ function Categories({ data }) {
         const genresSet = new Set();
         data.forEach((book) => {
             if (Array.isArray(book.genre)) {
-<<<<<<< HEAD
-               book.genre.forEach((g) => genresSet.add(g));
-=======
                 book.genre.forEach((g) => genresSet.add(g));
->>>>>>> 416ea2d1c4931f9034c0b430ad2c85ea1fe68218
             }
         });
         setGenres(genresSet);

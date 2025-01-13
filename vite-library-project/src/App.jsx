@@ -6,7 +6,7 @@ import Popular from './Components/Popular';
 
 function App() {
     const [books, setBooks] = useState([]); // State to store the fetched data
-
+    
     useEffect(() => {
         fetchData();
     }, []);
