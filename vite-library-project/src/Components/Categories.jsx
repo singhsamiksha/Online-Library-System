@@ -1,20 +1,24 @@
-import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import { useState, useEffect } from "react";
+import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-function Categories({ data }) {
+function Categories(props) {
+    const { books = [] } = props;
+
     const [genres, setGenres] = useState(new Set());
     const navigate = useNavigate();
 
     useEffect(() => {
         const genresSet = new Set();
-        data.forEach((book) => {
-            if (Array.isArray(book.genre)) {
-                book.genre.forEach((g) => genresSet.add(g));
+        books.forEach((book) => {
+            if (book?.genres?.length) {
+                book.genres?.forEach((g) => genresSet.add(g));
             }
         });
-        setGenres(genresSet);
-    }, [data]);
-    
+        setGenres([...genresSet].sort());
+    }, [books]);
+
 
     function handleClick(genre) {
         navigate(`/browserpage?genre=${genre}`); // Navigate with query params
@@ -38,5 +42,14 @@ function Categories({ data }) {
         </div>
     );
 }
+Categories.propTypes = {
+    books: PropTypes.array,
+}
 
-export default Categories;
+const mapStateToProps = (state) => {
+    return {
+        books: state.bookStore.books,
+    }
+}
+
+export default connect(mapStateToProps)(Categories);

@@ -1,24 +1,21 @@
-import { useState, useEffect } from "react";
+import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Globals from "../constants";
+import PropTypes from "prop-types";
 
-function Popular({ data }) {
-  const [popular, setPopular] = useState([]);
+function Popular(props) {
+  const { books = [] } = props;
+  const popular = books.filter(book => book?.rating >= Globals.BOOK.POPULAR_THRESHOLD)
   const navigate = useNavigate();
-
-  useEffect(() => {
-    // Filter books with a rating >= 4.5
-    const filteredBooks = data.filter((book) => book.Rating >= 4.9);
-    setPopular(filteredBooks); // Update the popular state
-  }, [data]);
 
   return (
     <div className="popular_box">
       <h2>Popular Books</h2>
       <div className="popular_book">
-        {popular.map((book) => (
+        {(popular || []).map((book) => (
           <div key={book.id-1} className="book">
             <img
-              src={book.cover_image}
+              src={book.coverImage}
               alt={book.title}
               width="180px"
               height="200px"
@@ -27,7 +24,7 @@ function Popular({ data }) {
             <p className="book_author">{book.author}</p>
             <button
               className="view_button"
-              onClick={() => navigate(`/book/${book.id-1}`)}
+              onClick={() => navigate(`/book/${book.id}`)}
             >
               View More
             </button>
@@ -38,4 +35,14 @@ function Popular({ data }) {
   );
 }
 
-export default Popular;
+Popular.propTypes = {
+  books: PropTypes.array,
+}
+
+const mapStateToProps = (state) => {
+  return {
+    books: state.bookStore.books,
+  }
+}
+
+export default connect(mapStateToProps)(Popular);

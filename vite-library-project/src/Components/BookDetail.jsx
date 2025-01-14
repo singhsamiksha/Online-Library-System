@@ -1,24 +1,17 @@
 import { useNavigate, useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 
-function BookDetail() {
-    const { id } = useParams(); // Get book ID from URL
+function BookDetail(props) {
+    const { books } = props;
+
+    // Get book ID from URL
+    const { id } = useParams(); 
     const navigate = useNavigate();
     const [book, setBook] = useState(null);
 
     useEffect(() => {
-        async function fetchBook() {
-            try {
-                const response = await fetch(
-                    `https://677f87360476123f76a6df69.mockapi.io/bookhubapi/bookdata`
-                );
-                const data = await response.json();
-                setBook(data[id]);
-            } catch (error) {
-                console.error("Error fetching book details:", error);
-            }
-        }
-        fetchBook();
+        setBook(books[id+1]);
     }, [id]);
 
     if (!book) {
@@ -54,4 +47,8 @@ function BookDetail() {
     );
 }
 
-export default BookDetail;
+const mapStateToProps = (state) => ({
+    books: state.bookStore.books,
+})
+
+export default connect(mapStateToProps)(BookDetail);

@@ -1,12 +1,15 @@
 import './App.css';
 import Navbar from './Components/Navbar';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import Categories from './Components/Categories';
 import Popular from './Components/Popular';
+import { connect } from 'react-redux';
+import { addBooks } from './redux/reducers/bookReducer';
+import PropTypes from 'prop-types';
 
-function App() {
-    const [books, setBooks] = useState([]); // State to store the fetched data
-    
+function App(props) {
+    const { addBooks = () => { } } = props;
+
     useEffect(() => {
         fetchData();
     }, []);
@@ -15,7 +18,7 @@ function App() {
         try {
             const response = await fetch('https://677f87360476123f76a6df69.mockapi.io/bookhubapi/bookdata');
             const data = await response.json();
-            setBooks(data); // Store the fetched data in state
+            addBooks(data);
         } catch (error) {
             console.error("Error fetching data:", error);
         }
@@ -25,12 +28,22 @@ function App() {
         <>
             <Navbar />
             <div className="Image">
-                <img src=".\src\assets\banner3.jpg" width="100%"/>
+                <img src=".\src\assets\banner3.jpg" width="100%" />
             </div>
-            <Categories data={books} /> 
-            <Popular data={books}></Popular>
+            <Categories />
+            <Popular />
         </>
     );
 }
 
-export default App;
+App.propTypes = {
+    addBooks: PropTypes.func,
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addBooks: (data) => dispatch(addBooks(data)),
+    }
+}
+
+export default connect(null, mapDispatchToProps)(App);
