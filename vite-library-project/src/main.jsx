@@ -4,7 +4,6 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import store from './redux/store';
 import { Provider } from 'react-redux'
 import Error from './Components/Error.jsx';
-import BooksByCategory from './Components/BooksByCategory.jsx'; 
 import Home from './views/Home.jsx';
 import BooksList from './views/BooksList.jsx';
 import BookDetail from './views/BookDetail.jsx';
@@ -17,7 +16,7 @@ const appRouter = createBrowserRouter([
     errorElement: <Error />,
   },
   {
-    path: "/browserpage",
+    path: "/books",
     element: <BooksList />,
     errorElement: <Error />,
   },
@@ -31,11 +30,6 @@ const appRouter = createBrowserRouter([
     element: <AddBook />,
     errorElement: <Error />,
   },
-  {
-    path: "/books/:category", 
-    element: <BooksByCategory />,
-    errorElement: <Error />
-  }
 ]);
 
 createRoot(document.getElementById('root')).render(

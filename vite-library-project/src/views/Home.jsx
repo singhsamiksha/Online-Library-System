@@ -3,14 +3,20 @@ import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { addBooks } from '../redux/reducers/bookReducer';
+import { changeTab } from '../redux/reducers/tabReducer';
 import Navbar from '../Components/Navbar';
 import Categories from '../Components/Categories';
 import Popular from '../Components/Popular';
+import Globals from '../constants';
 
 function Home(props) {
-    const { addBooks = () => { } } = props;
+    const {
+        addBooks = () => { },
+        setTab = () => { },
+    } = props;
 
     useEffect(() => {
+        setTab();
         fetchData();
     }, []);
 
@@ -38,11 +44,13 @@ function Home(props) {
 
 Home.propTypes = {
     addBooks: PropTypes.func,
+    setTab: PropTypes.func,
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         addBooks: (data) => dispatch(addBooks(data)),
+        setTab: () => dispatch(changeTab(Globals.TABS.HOME)),
     }
 }
 

@@ -1,10 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../Components/Navbar";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
+import { changeTab } from "../redux/reducers/tabReducer";
+import Globals from "../constants";
+import { connect } from "react-redux";
 
-function AddBook() {
+function AddBook(props) {
+  const {
+    setTab = () => { },
+  } = props;
+
+  useEffect(() => { setTab() }, []);
+
   const navigate = useNavigate();
-  
+
   const [book, setBook] = useState({
     title: "",
     author: "",
@@ -33,7 +43,6 @@ function AddBook() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Book Data Submitted:", book);
 
     fetch("https://677f87360476123f76a6df69.mockapi.io/bookhubapi/bookdata", {
       method: "POST",
@@ -48,7 +57,7 @@ function AddBook() {
   };
 
   function handleClick() {
-    navigate(`/browserpage`);
+    navigate(`/books`);
   }
 
   return (
@@ -58,12 +67,12 @@ function AddBook() {
         <h2>Add a New Book</h2>
         <form onSubmit={handleSubmit}>
           <label> Title: <input
-              type="text"
-              name="title"
-              value={book.title}
-              onChange={handleChange}
-              required
-            />
+            type="text"
+            name="title"
+            value={book.title}
+            onChange={handleChange}
+            required
+          />
           </label>
           <br />
           <label> Author:
@@ -134,4 +143,15 @@ function AddBook() {
   );
 }
 
-export default AddBook;
+AddBook.propTypes = {
+  addBooks: PropTypes.func,
+  setTab: PropTypes.func,
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setTab: () => dispatch(changeTab(Globals.TABS.ADD_BOOK)),
+  }
+}
+
+export default connect(null, mapDispatchToProps)(AddBook);

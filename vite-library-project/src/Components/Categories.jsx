@@ -21,7 +21,7 @@ function Categories(props) {
 
 
     function handleClick(genre) {
-        navigate(`/browserpage?genre=${genre}`); // Navigate with query params
+        navigate(`/books?genre=${genre}`); // Navigate with query params
     }
 
     return (

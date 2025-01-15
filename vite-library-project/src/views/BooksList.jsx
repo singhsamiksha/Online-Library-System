@@ -1,17 +1,25 @@
 import { useState, useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
+import { changeTab } from "../redux/reducers/tabReducer";
+import Globals from "../constants";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
-function BooksList() {
+function BooksList(props) {
+    const {
+        setTab = () => { },
+    } = props;
+
     const [books, setBooks] = useState([]);
     const [genres, setGenres] = useState(new Set());
     const [searchKeyword, setSearchKeyword] = useState("");
     const [selectedGenre, setSelectedGenre] = useState("");
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
- 
 
     useEffect(() => {
+        setTab();
         const genreFromParams = searchParams.get("genre") || "";
         setSelectedGenre(genreFromParams);
         fetchData();
@@ -24,7 +32,7 @@ function BooksList() {
                 book.genre.forEach((g) => genresSet.add(g));
             }
             if (Array.isArray(book.genre)) {
-               book.genre.forEach((g) => genresSet.add(g));
+                book.genre.forEach((g) => genresSet.add(g));
             }
         });
         setGenres(genresSet);
@@ -36,8 +44,8 @@ function BooksList() {
                 "https://677f87360476123f76a6df69.mockapi.io/bookhubapi/bookdata"
             );
             const data = await response.json();
-            
-            setBooks(data.sort((a,b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0)));
+
+            setBooks(data.sort((a, b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0)));
         } catch (error) {
             console.error("Error fetching data:", error);
         }
@@ -72,7 +80,7 @@ function BooksList() {
                         <select
                             value={selectedGenre}
                             onChange={(e) =>
-                                navigate(`/browserpage?genre=${e.target.value}`)
+                                navigate(`/books?genre=${e.target.value}`)
                             }
                         >
                             <option value="">All</option>
@@ -88,7 +96,7 @@ function BooksList() {
                     <h2>{selectedGenre ? `${selectedGenre} Books` : "All Books"}</h2>
                     <div className="book-list">
                         {filteredBooks.map((book) => (
-                            <div key={book.id-1} className="book">
+                            <div key={book.id - 1} className="book">
                                 <img
                                     src={book.cover_image}
                                     width="180px"
@@ -109,4 +117,15 @@ function BooksList() {
     );
 }
 
-export default BooksList;
+BooksList.propTypes = {
+    addBooks: PropTypes.func,
+    setTab: PropTypes.func,
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setTab: () => dispatch(changeTab(Globals.TABS.BOOKS_LIST)),
+    }
+}
+
+export default connect(null, mapDispatchToProps)(BooksList);
