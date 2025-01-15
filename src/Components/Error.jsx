@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
+import './Error.css';
 
 function Error() {
   return (

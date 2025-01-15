@@ -1,0 +1,24 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(32, 101, 206);
+    padding: 20px;
+    color: white;
+}
+
+.left {
+    display: flex;
+    gap: 15px;
+}
+
+ul {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.navbar h1 {
+    font-size: 25px;
+}

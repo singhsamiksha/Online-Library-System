@@ -1,8 +1,17 @@
+import './BookDetail.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { fetchBookById } from '../services/api';
+import Navbar from '../Components/Navbar';
+import { connect } from 'react-redux';
+import { changeTab } from '../redux/reducers/tabReducer';
+import Globals from '../constants';
+import PropTypes from 'prop-types';
 
-function BookDetail() {
+function BookDetail(props) {
+  const {
+    setTab = () => { },
+  } = props;
 
   // Get book ID from URL
   const { id } = useParams();
@@ -10,6 +19,7 @@ function BookDetail() {
   const [book, setBook] = useState(null);
 
   useEffect(() => {
+    setTab();
     fetchBookById(id).then((book) => {
       setBook(book);
     }).catch((error) => console.error(error));
@@ -26,8 +36,9 @@ function BookDetail() {
 
   return (
     <>
+      <Navbar />
       <div className="detailBookHeader">
-        <button onClick={() => navigate(-1)}>Back</button>
+        <button onClick={() => navigate(-1)}> {'<'} Back</button>
       </div>
       <div className="detail_box">
         <div className="book_cover">
@@ -39,7 +50,7 @@ function BookDetail() {
           <hr></hr>
           <p><b>Description:</b> </p>
           <p>{book.description}</p>
-          <p><b>Rating:</b> {book.Rating}</p>
+          <p><b>Rating:</b> {book.rating}</p>
           <p><b>Genres:</b> {book.genre.join(', ')}</p>
         </div>
       </div>
@@ -47,4 +58,12 @@ function BookDetail() {
   );
 }
 
-export default BookDetail;
+BookDetail.propTypes = {
+  setTab: PropTypes.func,
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  setTab: () => dispatch(changeTab(Globals.TABS.BOOKS_LIST)),
+});
+
+export default connect(null, mapDispatchToProps)(BookDetail);

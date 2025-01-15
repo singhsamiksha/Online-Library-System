@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Globals from '../constants';
 import PropTypes from 'prop-types';
+import './Popular.css';
 
 function Popular(props) {
   const { books = [] } = props;

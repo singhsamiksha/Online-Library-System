@@ -1,0 +1,18 @@
+.errorBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 100px;
+
+}
+
+.errorBox h1 {
+    font-size: 60px;
+    margin: 20px;
+    color: #ce4320;
+}
+
+.errorBox p {
+    color: rgb(32, 101, 206);
+}

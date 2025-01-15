@@ -1,3 +1,4 @@
+import './Categories.css';
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';

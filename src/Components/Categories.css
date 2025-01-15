@@ -1,0 +1,54 @@
+.Category_box {
+    padding: 30px;
+}
+
+.Category_box {
+    padding: 20px;
+    margin: 20px;
+}
+
+.Category_box h2 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 30px;
+    color: rgb(32, 101, 206);
+}
+
+.Category_box li {
+    list-style-type: none;
+    font-size: 18px;
+    color: white;
+}
+
+.Category_box li:active {
+    text-decoration: underline;
+    color: white;
+}
+
+.Category_box li:hover {
+    text-decoration: underline;
+    color: rgb(154, 226, 255);
+}
+
+.book_category {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    color: gray;
+    padding: 20px;
+}
+
+.genre_button {
+    width: 150px;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid gray;
+}
+
+.genre_button:hover {
+    background-color: rgb(32, 101, 206);
+    border: 1px solid rgb(32, 101, 206);
+    color: white;
+}

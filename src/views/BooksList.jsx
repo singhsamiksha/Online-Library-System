@@ -1,3 +1,4 @@
+import './BookList.css';
 import { useState, useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import Navbar from '../Components/Navbar';
@@ -57,7 +58,7 @@ function BooksList(props) {
       <div className="Browse_books">
         <div className="category_flex">
           <div className="search">
-            <p>Search Book Keywords</p>
+            <p>Search Book</p>
             <input
               type="text"
               placeholder="Search"
