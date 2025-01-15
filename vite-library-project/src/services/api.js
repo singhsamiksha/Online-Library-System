@@ -10,3 +10,35 @@ export const fetchBookById = async (id) => {
     }
     return null;
 }
+
+export const isImageURL = async (url) => {
+    try {
+        const response = await fetch(url, { method: 'HEAD', redirect: 'follow' });
+        if (response.ok) {
+            const contentType = response.headers.get('Content-Type');
+            if (contentType && contentType.startsWith('image/')) {
+                return true;
+            }
+        }
+        return false;
+    } catch {
+        return false;
+    }
+};
+
+export const createBook = async (apiData) => {
+    try {
+        const result = await fetch(`${basePath}/bookdata`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(apiData),
+        });
+
+        return result.json();
+    } catch (e) {
+        console.error('Error in creating book', e);
+        throw e;
+    }
+}

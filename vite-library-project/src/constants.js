@@ -10,4 +10,9 @@ Globals.TABS = {
     ADD_BOOK: 'ADD_BOOK',
 }
 
+Globals.RATING = {
+    LOWEST: 1,
+    HIGHEST: 5,
+}
+
 export default Globals;

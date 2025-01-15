@@ -1,0 +1,47 @@
+.addBookForm {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  border: 1px solid #ddd;
+  margin: 50px auto;
+  padding: 40px;
+}
+
+.addBookForm h2 {
+  text-align: center;
+  color: rgb(32, 101, 206);
+}
+
+.addBookForm label {
+  display: block;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.addBookForm input {
+  width: calc(100% - 22px);
+  padding: 10px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #333;
+}
+
+.submit-button {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 12px;
+  background-color: rgb(32, 101, 206);
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  margin-top: 24px;
+}
+
+.submit-button:hover {
+  background-color: rgb(24, 81, 155);
+}
