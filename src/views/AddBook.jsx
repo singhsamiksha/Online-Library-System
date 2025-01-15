@@ -43,20 +43,21 @@ function AddBook(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    validateForm().then((isValid) => {
+      if (isValid) {
+        const apiData = {
+          ...book,
+          genre: book.genre.split(',').map((g) => g.trim()).filter(Boolean),
+        };
 
-    if (validateForm()) {
-      const apiData = {
-        ...book,
-        genre: book.genre.split(',').map((g) => g.trim()).filter(Boolean),
-      };
-
-      createBook(apiData)
-        .then((response) => {
-          setSuccessMessage('✔ Created book succesfully');
-          navigate(`/book/${response.id}`);
-        })
-        .catch(() => setErrorMessage('!! Error in creating book'));
-    }
+        createBook(apiData)
+          .then((response) => {
+            setSuccessMessage('✔ Created book succesfully');
+            navigate(`/book/${response.id}`);
+          })
+          .catch(() => setErrorMessage('!! Error in creating book'));
+      }
+    });
   };
 
   const validateForm = async () => {
