@@ -5,6 +5,7 @@ import { changeTab } from '../redux/reducers/tabReducer';
 import Globals from '../constants';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { fetchBooks } from '../services/api';
 
 function BooksList(props) {
   const {
@@ -22,7 +23,9 @@ function BooksList(props) {
     setTab();
     const genreFromParams = searchParams.get('genre') || '';
     setSelectedGenre(genreFromParams);
-    fetchData();
+    fetchBooks()
+      .then((books) => setBooks(books))
+      .catch(() => console.error);
   }, [searchParams, setTab]);
 
   useEffect(() => {
@@ -37,19 +40,6 @@ function BooksList(props) {
     });
     setGenres(genresSet);
   }, [books]);
-
-  async function fetchData() {
-    try {
-      const response = await fetch(
-        'https://677f87360476123f76a6df69.mockapi.io/bookhubapi/bookdata'
-      );
-      const data = await response.json();
-
-      setBooks(data.sort((a, b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0)));
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  }
 
   const filteredBooks = books.filter((book) => {
     const matchesKeyword = book.title
@@ -106,7 +96,7 @@ function BooksList(props) {
                 <h3>{book.title}</h3>
                 <p className="book_author">{book.author}</p>
                 <button onClick={() => navigate(`/book/${book.id}`)}>
-                                    View
+                  View
                 </button>
               </div>
             ))}

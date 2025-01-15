@@ -1,5 +1,15 @@
 const basePath = 'https://677f87360476123f76a6df69.mockapi.io/bookhubapi';
 
+export const fetchBooks = async () => {
+  try {
+    const response = await fetch(`${basePath}/bookdata`);
+    const data = await response.json();
+    return (data || []).sort((a, b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0));
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+};
+
 export const fetchBookById = async (id) => {
   try {
     const response = await fetch(`${basePath}/bookdata/${id}`);

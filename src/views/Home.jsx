@@ -8,6 +8,7 @@ import Navbar from '../Components/Navbar';
 import Categories from '../Components/Categories';
 import Popular from '../Components/Popular';
 import Globals from '../constants';
+import { fetchBooks } from '../services/api';
 
 function Home(props) {
   const {
@@ -16,17 +17,10 @@ function Home(props) {
   } = props;
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await fetch('https://677f87360476123f76a6df69.mockapi.io/bookhubapi/bookdata');
-        const data = await response.json();
-        addBooks(data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    }
     setTab();
-    fetchData();
+    fetchBooks().then((books) => {
+      addBooks(books);
+    });
   }, [addBooks, setTab]);
 
   return (
