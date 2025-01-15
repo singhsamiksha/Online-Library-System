@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import Navbar from "./Navbar";
+import { useState, useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
+import Navbar from "../Components/Navbar";
 
-function BrowserPage() {
+function BooksList() {
     const [books, setBooks] = useState([]);
     const [genres, setGenres] = useState(new Set());
     const [searchKeyword, setSearchKeyword] = useState("");
@@ -36,7 +36,8 @@ function BrowserPage() {
                 "https://677f87360476123f76a6df69.mockapi.io/bookhubapi/bookdata"
             );
             const data = await response.json();
-            setBooks(data);
+            
+            setBooks(data.sort((a,b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0)));
         } catch (error) {
             console.error("Error fetching data:", error);
         }
@@ -96,7 +97,7 @@ function BrowserPage() {
                                 />
                                 <h3>{book.title}</h3>
                                 <p className="book_author">{book.author}</p>
-                                <button onClick={() => navigate(`/book/${book.id-1}`)}>
+                                <button onClick={() => navigate(`/book/${book.id}`)}>
                                     View
                                 </button>
                             </div>
@@ -108,4 +109,4 @@ function BrowserPage() {
     );
 }
 
-export default BrowserPage;
+export default BooksList;

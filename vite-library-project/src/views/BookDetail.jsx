@@ -1,9 +1,9 @@
 import { useNavigate, useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import { fetchBookById } from "../services/api";
 
-function BookDetail(props) {
-    const { books } = props;
+function BookDetail() {
 
     // Get book ID from URL
     const { id } = useParams(); 
@@ -11,7 +11,10 @@ function BookDetail(props) {
     const [book, setBook] = useState(null);
 
     useEffect(() => {
-        setBook(books[id+1]);
+        fetchBookById(id).then(book => {
+            if(!book) {}
+            setBook(book);
+        }).catch(error => console.error(error))
     }, [id]);
 
     if (!book) {
@@ -47,8 +50,4 @@ function BookDetail(props) {
     );
 }
 
-const mapStateToProps = (state) => ({
-    books: state.bookStore.books,
-})
-
-export default connect(mapStateToProps)(BookDetail);
+export default BookDetail;
