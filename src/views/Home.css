@@ -1,10 +1,11 @@
-*{
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+* {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-.navbar, .detailBookHeader{
+.navbar,
+.detailBookHeader {
   display: flex;
   justify-content: space-between;
   background-color: rgb(32, 101, 206);
@@ -12,123 +13,130 @@
   color: white;
 }
 
-.left{
+.left {
   display: flex;
   gap: 15px;
 }
 
-ul{
+ul {
   display: flex;
-  gap: 30px;
+  gap: 8px;
   justify-content: center;
   align-items: center;
   color: white;
 }
 
-h1{
+h1 {
   font-size: 25px;
 }
 
-li{
+li {
   list-style-type: none;
   font-size: 18px;
   color: white;
 }
 
-li:active{
+li:active {
   text-decoration: underline;
   color: white;
 }
 
-li:hover{
+li:hover {
   text-decoration: underline;
   color: rgb(154, 226, 255);
 }
 
-.Category_box{
+.Category_box {
   padding: 30px;
 }
+
 .book_category {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
-  gap: 30px; 
-  justify-content: center; 
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 30px;
+  justify-content: center;
   align-items: center;
   color: gray;
   padding: 20px;
 }
 
-.popular_book, .book-list{
+.popular_book,
+.book-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 50px; 
-  justify-content: center;  
+  gap: 50px;
+  justify-content: center;
 }
 
-.book-list{
+.book-list {
   margin: 60px;
 }
 
 
-.category_flex{
+.category_flex {
   display: flex;
-  padding: 30px 50px ;
+  padding: 30px 50px;
   justify-content: space-between;
   background-color: #7bb9ff;
   color: white;
 }
 
-.search, .select{
+.search,
+.select {
   display: flex;
-  gap:20px;
+  gap: 20px;
 }
 
-input{
+input {
   width: 400px;
-  padding: 5px 5px ;
+  padding: 5px 5px;
 
 }
 
-select{
+select {
   width: 200px;
-  padding: 5px 5px ;
+  padding: 5px 5px;
 }
 
-.search p, .select p{
+.search p,
+.select p {
   font-size: 20px;
 }
 
-.Category_box, .popular_box{
+.Category_box,
+.popular_box {
   padding: 20px;
   margin: 20px;
 }
 
-.Category_box h2, .popular_box h2, .list-box h2{
+.Category_box h2,
+.popular_box h2,
+.list-box h2 {
   text-align: center;
   font-size: 30px;
   margin-bottom: 30px;
   color: rgb(32, 101, 206);
 }
 
-.list-box h2{
+.list-box h2 {
   margin: 30px;
 }
 
-.genre_button{
+.genre_button {
   width: 150px;
   padding: 10px;
   background-color: white;
   border: 1px solid gray;
 }
 
-.genre_button:hover{
+.genre_button:hover {
   background-color: rgb(32, 101, 206);
   border: 1px solid rgb(32, 101, 206);
   color: white;
 }
 
 
-.book{
+.book {
   background-color: rgb(255, 255, 255);
   border: 1px solid gray;
   display: flex;
@@ -138,16 +146,16 @@ select{
   padding: 30px 0px;
 }
 
-.book img{
+.book img {
   margin-bottom: 10px;
 }
 
-.book p{
+.book p {
   margin-bottom: 15px;
   font-size: 18px;
 }
 
-.book button{
+.book button {
   margin-bottom: 10px;
   width: 150px;
   padding: 10px;
@@ -156,32 +164,32 @@ select{
   color: white;
 }
 
-.view_button:hover{
-     background-color: rgb(115, 173, 22);
-     border-color: rgb(115, 173, 22);
+.view_button:hover {
+  background-color: rgb(115, 173, 22);
+  border-color: rgb(115, 173, 22);
 }
 
-h3{
+h3 {
   text-align: center;
 }
 
-.book_author{
+.book_author {
   margin: 10px 2px;
   color: #ce4320;
   font-size: 100px;
 }
 
-.detailBookHeader button{
-     width: 100px;
-     background-color: white;
-     border: none;
-     box-shadow: #7bb9ff;
-     color: #7bb9ff;
-     padding: 5px;
-     font-size: 20px;
+.detailBookHeader button {
+  width: 100px;
+  background-color: white;
+  border: none;
+  box-shadow: #7bb9ff;
+  color: #7bb9ff;
+  padding: 5px;
+  font-size: 20px;
 }
 
-.detail_box{
+.detail_box {
   display: flex;
   gap: 50px;
   justify-content: space-evenly;
@@ -191,23 +199,24 @@ h3{
   border-radius: 20px;
 }
 
-.book_text h2{
-   font-size: 38px;
+.book_text h2 {
+  font-size: 38px;
 }
- hr{
-  margin-bottom: 20px;
- }
 
-.book_text p{
+hr {
+  margin-bottom: 20px;
+}
+
+.book_text p {
   margin: 5px 0px;
 }
 
-.addBookForm{
+.addBookForm {
   display: flex;
   flex-direction: column;
 }
 
-.errorBox{
+.errorBox {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -216,17 +225,17 @@ h3{
 
 }
 
-.errorBox h1{
-  font-size:  60px;
+.errorBox h1 {
+  font-size: 60px;
   margin: 20px;
   color: #ce4320;
 }
 
-.errorBox p{
+.errorBox p {
   color: rgb(32, 101, 206);
 }
 
-.loading_class{
+.loading_class {
   margin: 200px;
   display: flex;
   justify-content: center;
@@ -234,15 +243,14 @@ h3{
   flex-direction: column;
 }
 
-.loading{
+.loading {
   width: 50px;
   height: 50px;
   border-radius: 20%;
   background-color: #2065ce;
   margin: 50px;
 }
-.loading_class p{
+
+.loading_class p {
   font-size: 40px;
 }
-
-

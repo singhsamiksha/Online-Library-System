@@ -1,31 +1,30 @@
 import './AddBook.css';
-import { useEffect, useState } from "react";
-import Navbar from "../Components/Navbar";
-import { useNavigate } from "react-router-dom";
-import PropTypes from "prop-types";
-import { changeTab } from "../redux/reducers/tabReducer";
-import Globals from "../constants";
-import { connect } from "react-redux";
-import { createBook, isImageURL } from "../services/api";
+import { useEffect, useState } from 'react';
+import Navbar from '../Components/Navbar';
+import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { changeTab } from '../redux/reducers/tabReducer';
+import Globals from '../constants';
+import { connect } from 'react-redux';
+import { createBook, isImageURL } from '../services/api';
 import Alert from '../Components/Alert';
 
 const initialForm = {
-  title: "",
-  author: "",
-  publication_year: "",
-  genre: "",
-  description: "",
-  cover_image: "",
-  rating: "",
+  title: '',
+  author: '',
+  publication_year: '',
+  genre: '',
+  description: '',
+  cover_image: '',
+  rating: '',
 };
-
 
 function AddBook(props) {
   const {
     setTab = () => { },
   } = props;
 
-  useEffect(() => { setTab() }, [setTab]);
+  useEffect(() => { setTab(); }, [setTab]);
 
   const navigate = useNavigate();
 
@@ -48,7 +47,7 @@ function AddBook(props) {
     if (validateForm()) {
       const apiData = {
         ...book,
-        genre: book.genre.split(',').map(g => g.trim()).filter(Boolean),
+        genre: book.genre.split(',').map((g) => g.trim()).filter(Boolean),
       };
 
       createBook(apiData)
@@ -63,28 +62,28 @@ function AddBook(props) {
   const validateForm = async () => {
     let tempErrors = { ...initialForm };
 
-    Object.keys(tempErrors).forEach(key => {
+    Object.keys(tempErrors).forEach((key) => {
       if (!book[key] || !book[key].length) {
         tempErrors[key] = 'Please enter the value.';
       };
-    })
+    });
 
     if (isNaN(book.publication_year) || book.publication_year.length !== 4) {
-      tempErrors.publication_year = "Please enter a valid 4-digit publication year.";
+      tempErrors.publication_year = 'Please enter a valid 4-digit publication year.';
     }
 
-    if (book.genre?.split(',').map(g => g.trim()).filter(Boolean).length === 0) {
-      tempErrors.genre = "At least one genre must be selected.";
+    if (book.genre?.split(',').map((g) => g.trim()).filter(Boolean).length === 0) {
+      tempErrors.genre = 'At least one genre must be selected.';
     }
 
     // Cover image URL validation
     const urlPattern = /^(https?:\/\/[^\s$.?#].[^\s]*)$/i;
     if (!urlPattern.test(book.cover_image)) {
-      tempErrors.cover_image = "Please enter a valid URL for the cover image.";
+      tempErrors.cover_image = 'Please enter a valid URL for the cover image.';
     } else {
       const isImageValid = await isImageURL(book.cover_image);
       if (!isImageValid) {
-        tempErrors.cover_image = "The cover image URL is not a valid image.";
+        tempErrors.cover_image = 'The cover image URL is not a valid image.';
       }
     }
 
@@ -93,7 +92,7 @@ function AddBook(props) {
       || book.rating < Globals.RATING.LOWEST
       || book.rating > Globals.RATING.HIGHEST
     ) {
-      tempErrors.rating = "Rating must be a integer between 1 and 5.";
+      tempErrors.rating = 'Rating must be a integer between 1 and 5.';
     }
 
     setErrors(tempErrors);
@@ -156,12 +155,10 @@ function AddBook(props) {
 AddBook.propTypes = {
   addBooks: PropTypes.func,
   setTab: PropTypes.func,
-}
+};
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setTab: () => dispatch(changeTab(Globals.TABS.ADD_BOOK)),
-  }
-}
+const mapDispatchToProps = (dispatch) => ({
+  setTab: () => dispatch(changeTab(Globals.TABS.ADD_BOOK)),
+});
 
 export default connect(null, mapDispatchToProps)(AddBook);

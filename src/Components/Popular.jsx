@@ -1,11 +1,11 @@
-import { connect } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import Globals from "../constants";
-import PropTypes from "prop-types";
+import { connect } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import Globals from '../constants';
+import PropTypes from 'prop-types';
 
 function Popular(props) {
   const { books = [] } = props;
-  const popular = books.filter(book => book?.rating >= Globals.BOOK.POPULAR_THRESHOLD)
+  const popular = books.filter((book) => book?.rating >= Globals.BOOK.POPULAR_THRESHOLD);
   const navigate = useNavigate();
 
   return (
@@ -13,7 +13,7 @@ function Popular(props) {
       <h2>Popular Books</h2>
       <div className="popular_book">
         {(popular || []).map((book) => (
-          <div key={book.id-1} className="book">
+          <div key={book.id - 1} className="book">
             <img
               src={book.coverImage}
               alt={book.title}
@@ -37,12 +37,10 @@ function Popular(props) {
 
 Popular.propTypes = {
   books: PropTypes.array,
-}
+};
 
-const mapStateToProps = (state) => {
-  return {
-    books: state.bookStore.books,
-  }
-}
+const mapStateToProps = (state) => ({
+  books: state.bookStore.books,
+});
 
 export default connect(mapStateToProps)(Popular);
