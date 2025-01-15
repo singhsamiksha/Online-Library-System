@@ -39,6 +39,7 @@ function Navbar({ currentTab = null }) {
             style={{
               color: 'white',
               textDecoration: 'none',
+              margin: 'auto',
             }}
           >
             <h1>BookHub</h1>
