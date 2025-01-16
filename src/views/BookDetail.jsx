@@ -50,7 +50,7 @@ function BookDetail(props) {
           <hr></hr>
           <p><b>Description:</b> </p>
           <p>{book.description}</p>
-          <p><b>Rating:</b> {book.rating}</p>
+          <p><b>Rating:</b> {book.rating} out of {Globals.RATING.HIGHEST}</p>
           <p><b>Genres:</b> {book.genre.join(', ')}</p>
         </div>
       </div>

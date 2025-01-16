@@ -7,6 +7,7 @@ import Globals from '../constants';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchBooks } from '../services/api';
+import BookCard from '../Components/BookCard';
 
 function BooksList(props) {
   const {
@@ -88,19 +89,7 @@ function BooksList(props) {
           <h2>{selectedGenre ? `${selectedGenre} Books` : 'All Books'}</h2>
           <div className="book-list">
             {filteredBooks.map((book) => (
-              <div key={book.id} className="book">
-                <img
-                  src={book.cover_image}
-                  width="180px"
-                  height="200px"
-                  alt={book.title}
-                />
-                <h3>{book.title}</h3>
-                <p className="book_author">{book.author}</p>
-                <button onClick={() => navigate(`/book/${book.id}`)}>
-                  View
-                </button>
-              </div>
+              <BookCard key={book.id} book={book}/>
             ))}
           </div>
         </div>

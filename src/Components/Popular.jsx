@@ -1,35 +1,19 @@
 import { connect } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import Globals from '../constants';
 import PropTypes from 'prop-types';
 import './Popular.css';
+import BookCard from './BookCard';
 
 function Popular(props) {
   const { books = [] } = props;
   const popular = books.filter((book) => book?.rating >= Globals.BOOK.POPULAR_THRESHOLD);
-  const navigate = useNavigate();
 
   return (
     <div className="popular_box">
       <h2>Popular Books</h2>
       <div className="popular_book">
         {(popular || []).map((book) => (
-          <div key={book.id} className="book">
-            <img
-              src={book.coverImage}
-              alt={book.title}
-              width="180px"
-              height="200px"
-            />
-            <h3>{book.title}</h3>
-            <p className="book_author">{book.author}</p>
-            <button
-              className="view_button"
-              onClick={() => navigate(`/book/${book.id}`)}
-            >
-              View More
-            </button>
-          </div>
+          <BookCard key={book.id} book={book} />
         ))}
       </div>
     </div>
