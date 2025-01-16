@@ -13,8 +13,8 @@ function Categories(props) {
   useEffect(() => {
     const genresSet = new Set();
     books.forEach((book) => {
-      if (book?.genres?.length) {
-        book.genres?.forEach((g) => genresSet.add(g));
+      if (book?.genre?.length) {
+        book.genre?.forEach((g) => genresSet.add(g));
       }
     });
     setGenres([...genresSet].sort());

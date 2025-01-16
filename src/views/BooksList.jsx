@@ -13,44 +13,45 @@ function BooksList(props) {
     setTab = () => { },
   } = props;
 
-  const [books, setBooks] = useState([]);
+  const [allBooks, setAllBooks] = useState([]);
+  const [filteredBooks, setFilteredBooks] = useState([]);
+
   const [genres, setGenres] = useState(new Set());
   const [searchKeyword, setSearchKeyword] = useState('');
+
   const [selectedGenre, setSelectedGenre] = useState('');
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
+  useEffect(() => { setTab(); }, [setTab]);
+
   useEffect(() => {
-    setTab();
     const genreFromParams = searchParams.get('genre') || '';
     setSelectedGenre(genreFromParams);
     fetchBooks()
-      .then((books) => setBooks(books))
+      .then((books) => setAllBooks(books))
       .catch(() => console.error);
-  }, [searchParams, setTab]);
+  }, [searchParams]);
 
   useEffect(() => {
     const genresSet = new Set();
-    books.forEach((book) => {
-      if (Array.isArray(book.genre)) {
-        book.genre.forEach((g) => genresSet.add(g));
-      }
-      if (Array.isArray(book.genre)) {
+    allBooks.forEach((book) => {
+      if (Array.isArray(book?.genre)) {
         book.genre.forEach((g) => genresSet.add(g));
       }
     });
     setGenres(genresSet);
-  }, [books]);
+  }, [allBooks]);
 
-  const filteredBooks = books.filter((book) => {
-    const matchesKeyword = book.title
-      .toLowerCase()
-      .includes(searchKeyword.toLowerCase());
-    const matchesGenre = selectedGenre
-      ? book.genre.includes(selectedGenre)
-      : true;
-    return matchesKeyword && matchesGenre;
-  });
+  useEffect(() => {
+    setFilteredBooks(allBooks.filter((book) => {
+      const { title, genre } = book;
+      const matchesKeyword = title.toLowerCase().trim().includes(searchKeyword.toLowerCase().trim());
+      const matchesGenre = selectedGenre ? genre.includes(selectedGenre) : true;
+
+      return matchesGenre && matchesKeyword;
+    }));
+  }, [searchKeyword, selectedGenre, allBooks]);
 
   return (
     <>
@@ -87,7 +88,7 @@ function BooksList(props) {
           <h2>{selectedGenre ? `${selectedGenre} Books` : 'All Books'}</h2>
           <div className="book-list">
             {filteredBooks.map((book) => (
-              <div key={book.id - 1} className="book">
+              <div key={book.id} className="book">
                 <img
                   src={book.cover_image}
                   width="180px"

@@ -14,7 +14,7 @@ function Popular(props) {
       <h2>Popular Books</h2>
       <div className="popular_book">
         {(popular || []).map((book) => (
-          <div key={book.id - 1} className="book">
+          <div key={book.id} className="book">
             <img
               src={book.coverImage}
               alt={book.title}

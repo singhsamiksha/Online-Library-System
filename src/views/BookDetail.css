@@ -1,21 +1,23 @@
-.detailBookHeader {
+.detail_book_header {
   display: flex;
   justify-content: space-between;
-  background-color: rgb(32, 101, 206);
   padding: 20px;
-  color: white;
 }
 
-.detailBookHeader button {
+.detail_book_header button {
   width: 100px;
-  background-color: white;
   border: none;
-  box-shadow: #7bb9ff;
-  color: rgb(32, 101, 206);
-  padding: 5px;
+  padding: 8px;
   font-size: 16px;
   border-radius: 4px;
   cursor: pointer;
+  color: white;
+  background-color: rgb(32, 101, 206);
+  transition: background-color 0.3s ease;
+}
+
+.detail_book_header button:hover {
+  background-color: rgb(53, 121, 226);
 }
 
 .detail_box {

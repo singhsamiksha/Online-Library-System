@@ -15,7 +15,7 @@ export const bookSlice = createSlice({
         author: book.author,
         rating: book.rating,
         coverImage: book.cover_image,
-        genres: book.genre,
+        genre: book.genre,
         publicationYear: book.publication_year,
       }));
     },

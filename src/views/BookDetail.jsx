@@ -37,8 +37,8 @@ function BookDetail(props) {
   return (
     <>
       <Navbar />
-      <div className="detailBookHeader">
-        <button onClick={() => navigate(-1)}> {'<'} Back</button>
+      <div className="detail_book_header">
+        <button onClick={() => navigate(-1)}> ⬅ Back </button>
       </div>
       <div className="detail_box">
         <div className="book_cover">
