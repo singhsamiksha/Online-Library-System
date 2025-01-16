@@ -6,30 +6,6 @@ import Globals from '../constants';
 
 function Navbar({ currentTab = null }) {
 
-  // Button style (common)
-  const buttonStyle = {
-    padding: '10px 20px',
-    color: 'rgb(32, 101, 206)',
-    border: 'none',
-    cursor: 'pointer',
-    borderRadius: '5px',
-    fontSize: '16px',
-    transition: 'background-color 0.3s ease, color 0.3s ease',
-    textDecoration: 'none',
-  };
-
-  const activeButtonStyle = {
-    ...buttonStyle,
-    backgroundColor: 'white',
-    color: 'rgb(32, 101, 206)',
-  };
-
-  const inactiveButtonStyle = {
-    ...buttonStyle,
-    backgroundColor: 'rgb(32, 101, 206)',
-    color: 'white',
-  };
-
   return (
     <>
       <div className="navbar">
@@ -47,9 +23,9 @@ function Navbar({ currentTab = null }) {
         </div>
         <div className="right">
           <ul>
-            <Link to={'/'} style={currentTab === Globals.TABS.HOME ? activeButtonStyle : inactiveButtonStyle}>Home</Link>
-            <Link to={'/books'} style={currentTab === Globals.TABS.BOOKS_LIST ? activeButtonStyle : inactiveButtonStyle}>Browse Books</Link>
-            <Link to={'/addbook'} style={currentTab === Globals.TABS.ADD_BOOK ? activeButtonStyle : inactiveButtonStyle}>Add Book</Link>
+            <Link to={'/'} className={`nav_button ${currentTab === Globals.TABS.HOME ? 'active' : ''}`}>Home</Link>
+            <Link to={'/books'} className={`nav_button ${currentTab === Globals.TABS.BOOKS_LIST ? 'active' : ''}`}>Browse Books</Link>
+            <Link to={'/addbook'} className={`nav_button ${currentTab === Globals.TABS.ADD_BOOK ? 'active' : ''}`}>Add Book</Link>
           </ul>
         </div>
       </div>

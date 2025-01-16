@@ -14,7 +14,7 @@
     text-align: center;
     font-size: 30px;
     margin-bottom: 30px;
-    color: rgb(32, 101, 206);
+    color: var(--primary-color);
 }
 
 .view_button:hover {
@@ -46,7 +46,7 @@
     width: 150px;
     padding: 10px;
     background-color: #2065ce;
-    border: 2px solid rgb(32, 101, 206);
+    border: 2px solid var(--primary-color);
     color: white;
 }
 

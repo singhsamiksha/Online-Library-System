@@ -8,6 +8,7 @@ import Home from './views/Home.jsx';
 import BooksList from './views/BooksList.jsx';
 import BookDetail from './views/BookDetail.jsx';
 import AddBook from './views/AddBook.jsx';
+import './index.css';
 
 const appRouter = createBrowserRouter([
   {

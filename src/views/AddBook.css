@@ -11,7 +11,7 @@
 
 .addBookForm h2 {
   text-align: center;
-  color: rgb(32, 101, 206);
+  color: var(--primary-color);
 }
 
 .addBookForm label {
@@ -35,7 +35,7 @@
   justify-content: center;
   width: 100%;
   padding: 12px;
-  background-color: rgb(32, 101, 206);
+  background-color: var(--primary-color);
   border: none;
   border-radius: 5px;
   font-size: 16px;

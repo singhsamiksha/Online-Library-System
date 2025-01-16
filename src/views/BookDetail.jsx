@@ -23,7 +23,7 @@ function BookDetail(props) {
     fetchBookById(id).then((book) => {
       setBook(book);
     }).catch((error) => console.error(error));
-  }, [id]);
+  }, [id, setTab]);
 
   if (!book) {
     return (

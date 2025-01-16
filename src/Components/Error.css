@@ -14,5 +14,5 @@
 }
 
 .errorBox p {
-    color: rgb(32, 101, 206);
+    color: var(--primary-color);
 }

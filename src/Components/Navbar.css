@@ -1,8 +1,8 @@
 .navbar {
     display: flex;
     justify-content: space-between;
-    background-color: rgb(32, 101, 206);
-    padding: 20px;
+    background-color: var(--primary-color);
+    padding: 8px 24px;
     color: white;
 }
 
@@ -21,4 +21,25 @@ ul {
 
 .navbar h1 {
     font-size: 25px;
+}
+
+.nav_button {
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.nav_button:hover {
+    background-color: rgb(24, 82, 165); /* Slightly darker shade for hover on inactive */
+}
+
+.nav_button.active {
+    background-color: white;
+    color: var(--primary-color);
 }
